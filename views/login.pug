@@ -1,15 +1,15 @@
 extends layout
 
 block content
-
-	h1
-		|Login Page
+	
+	h1= title
+	
 	form(action = 'login')
 		label
 			|ID
 		div
 		input(type = "text", name = "username")
-	div
+		div
 		label
 			|Password
 		div
