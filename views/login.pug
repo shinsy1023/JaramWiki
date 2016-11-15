@@ -1,0 +1,18 @@
+extends layout
+
+block content
+	
+	h1= title
+	
+	form(action = 'login')
+		label
+			|ID
+		div
+		input(type = "text", name = "username")
+		div
+		label
+			|Password
+		div
+		input(type = "password", name = "userpw")
+	div
+	input(type = "submit", name = "button")
