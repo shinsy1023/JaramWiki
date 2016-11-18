@@ -25,3 +25,18 @@ router.get('/', function(req, res) {
 })
 
 module.exports = router
+
+// posts의 GET = read
+// posts POST = write
+// posts/:post PUT = modify
+// posts/:post DELETE = delete
+
+// DELETE delete
+	//문서 삭제
+
+// POST write
+	//파일을 따로 만들거나, URL을 post name 변수를 app.js에서 wiki.js로 이동
+
+// PUT modify
+
+// GET read

@@ -6,7 +6,6 @@ var cookieParser = require('cookie-parser')
 var bodyParser = require('body-parser')
 
 var routes = require('./routes/index')
-var users = require('./routes/user/users')
 var login = require('./routes/user/login')
 var wiki = require('./routes/discuss/wiki')
 var write = require('./routes/discuss/write')
@@ -27,10 +26,9 @@ app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/', routes)
-app.use('/users', users)
 app.use('/login', login)
-app.use('/wiki', wiki)
-app.use('/write', write)
+app.use('/posts/:post', wiki)
+app.use('/posts', write)
 app.use('/threads',threads);
 
 // catch 404 and forward to error handler
