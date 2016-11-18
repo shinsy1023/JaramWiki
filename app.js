@@ -10,6 +10,7 @@ var users = require('./routes/users')
 var login = require('./routes/login')
 var wiki = require('./routes/wiki')
 var write = require('./routes/write')
+var threads = require('./routes/discuss/thread.js')
 
 var app = express()
 
@@ -30,6 +31,7 @@ app.use('/users', users)
 app.use('/login', login)
 app.use('/wiki', wiki)
 app.use('/write', write)
+app.use('/threads',threads);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
