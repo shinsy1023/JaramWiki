@@ -1,35 +1,36 @@
 var mongoose = require('mongoose')
+var Schema = mongoose.Schema;
 
-var User = new mongoose.Schema{
-	_id = "<ID>",
-	login_id = "<String>",
-	login_pw = "<String>",
-	name = "<String>",
-	post_id = "<ID>"
-}
+var User = new Schema({
+	_id = Schema.Types.ObjectId,
+	login_id = String,
+	login_pw = String,
+	name = String
+});
 
-var Post = new mongoose.Schema{
-	_id = "<ID>",
-	title = "<String>"
-}
+var Post = new Schema({
+	_id = Schema.Types.ObjectId,
+	title = String
+});
 
-var History = new mongoose.Schema{
-	_id = "<ID>",
-	content = "<String>",
-	date = "<date>",
-	postId = "<ID>"
-}
+var History = new Schema({
+	_id = Schema.Types.ObjectId,
+	content = String,
+	date = { type: Date, default: Date.now },
+	postId = Schema.Types.ObjectId
+});
 
-var Thread = new mongoose.Schema{
-	_id = "<ID>",
-	title = "<String>",
-	flag = "<boolean>",
-	postTitle = "<String>"
-}
+var Thread = new Schema({
+	_id = Schema.Types.ObjectId,
+	title = String,
+	flag = Boolean,
+	postId = Schema.Types.ObjectId
+});
 
-var Comment = new mongoose.Schema{
-	_id = "<ID>",
-	threadId = "<ID>",
-	content = "<String>",
-	date = "<date>"
-}
+var Comment = new Schema({
+	_id = Schema.Types.ObjectId,
+	content = String,
+	date = { type: Date, default: Date.now },
+	writerId = Schema.Types.ObjectId,
+	threadId = Schema.Types.ObjectId
+});
