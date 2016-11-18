@@ -1,0 +1,23 @@
+mixin comments(comments)
+  eack comment in comments
+    div
+      div
+        p=comment['id']
+        p=comment['date']
+      div
+        p=comment['content']
+
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='#')
+  body
+    h1=post
+    h2=title
+    +comments(comments)
+    hr
+    h3="댓글 달기"
+    form
+      input(type="text", name="content")
+      input(type="submit", value="Submit")
