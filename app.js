@@ -18,7 +18,7 @@ var threads = require('./routes/discuss/thread.js')
 
 //connect to mongodb server
 
-mongoose.connect('mongodb://localhost:3000/myDB');
+mongoose.connect('mongodb://localhost:3000/test');
 
 var db = mongoose.connection;
 db.on('error', console.error);
@@ -29,11 +29,11 @@ db.once('open', function(){
 
 var app = express()
 
-var userDB = require('user')
-var postDB = require('post')
-var historyDB = require('./history')
-var threadDB = require('./thread')
-var commentDB = require('./comment')
+var userDB = require('./DB/user')
+var postDB = require('./DB/post')
+var historyDB = require('./DB/history')
+var threadDB = require('./DB/thread')
+var commentDB = require('./DB/comment')
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
