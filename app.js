@@ -1,6 +1,8 @@
 var express = require('express')
 var path = require('path')
 // var favicon = require('serve-favicon')
+var mongoose = require('mongoose')
+
 var logger = require('morgan')
 var cookieParser = require('cookie-parser')
 var bodyParser = require('body-parser')
@@ -8,11 +10,20 @@ var bodyParser = require('body-parser')
 var routes = require('./routes/index')
 var users = require('./routes/user/users')
 var login = require('./routes/user/login')
-var wiki = require('./routes/discuss/wiki')
-var write = require('./routes/discuss/write')
-var threads = require('./routes/discuss/thread.js')
+var wiki = require('./routes/post/wiki')
+var editor = require('./routes/post/write')
+var history = require('./routes/post/history')
+var threads = require('./routes/discuss/thread')
 
 var app = express()
+
+var db = mongoose.connection
+db.on('error', console.error)
+db.once('open', function() {
+  console.log('Connected to database');
+})
+
+mongoose.connect('mongodb://localhost/test')
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
@@ -30,8 +41,11 @@ app.use('/', routes)
 app.use('/users', users)
 app.use('/login', login)
 app.use('/wiki', wiki)
-app.use('/write', write)
-app.use('/threads',threads);
+app.use('/editor', editor)
+app.use('/histories', history)
+app.use('/threads',threads)
+
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

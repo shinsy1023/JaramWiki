@@ -1,0 +1,13 @@
+doctype html
+html
+	head
+		h1!= title
+		
+	body
+		- if(revisions != 'none')
+			div.container
+				table!= revisions
+		- else
+			div.container
+				p
+					strong!= error
