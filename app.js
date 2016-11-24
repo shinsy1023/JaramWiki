@@ -1,5 +1,6 @@
 var express = require('express')
 var path = require('path')
+var mongoose = require('mongoose')
 // var favicon = require('serve-favicon')
 var logger = require('morgan')
 var cookieParser = require('cookie-parser')
@@ -11,7 +12,28 @@ var wiki = require('./routes/discuss/wiki')
 var write = require('./routes/discuss/write')
 var threads = require('./routes/discuss/thread.js')
 
+//set DB modules
+
+
+
+//connect to mongodb server
+
+mongoose.connect('mongodb://localhost:3000/myDB');
+
+var db = mongoose.connection;
+db.on('error', console.error);
+db.once('open', function(){
+    // connected to mongodb server
+    console.log("Connected to mongod server");
+});
+
 var app = express()
+
+var userDB = require('user')
+var postDB = require('post')
+var historyDB = require('./history')
+var threadDB = require('./thread')
+var commentDB = require('./comment')
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
