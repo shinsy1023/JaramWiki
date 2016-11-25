@@ -13,7 +13,8 @@ comment0.save(function(err, book){
 
 
 router.get('/',function(req, res, next) {
-	res.render('discuss',{threads:threads, post_title: post_title})
+
+	res.render('thread_list',{threads:threads, post_title: post_title})
 });
 
 
@@ -21,7 +22,7 @@ router.get('/:threadName', function(req, res, next) {
 	var threadName = req.params.threadName
 	commentDB.find(function(err, comments){
         if(err) return res.status(500).send({error: 'database failure'});
-        res.render('thread', { title : threadName, comments : comments })
+        res.render('thread_detail', { title : threadName, comments : comments })
     })
 });
 

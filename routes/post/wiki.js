@@ -23,7 +23,7 @@ router.get('/:name', function(req, res, next) {
 		console.log('post : ' + post);
 		if(post == {} || post == null || post == '') {
 			console.log('no post named \'' + req.params.name + '\' in database... redirecting to alternative page');
-			res.render('view', {title: '문서를 찾을 수 없습니다.', error: true, contents : '<strong>다시 시도해 보세요.</strong>'});
+			res.render('post_view', {title: '문서를 찾을 수 없습니다.', error: true, contents : '<strong>다시 시도해 보세요.</strong>'});
 		} else {
 			post = post.toObject();
 			History.findOne({postId: post._id, rev: post.rev}, function(err, history) {

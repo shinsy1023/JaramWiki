@@ -47,7 +47,7 @@ router.get('/:name/:rev', function(req, res, next) {
 		}).then(function(err) {
 			marked(contents, function(err, content) {
 				if(!err) {
-					res.render('view', {
+					res.render('post_view', {
 						title: req.params.name + " (r" + req.params.rev + ")",
 						contents: content,
 						history: true
