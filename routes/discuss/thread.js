@@ -2,7 +2,7 @@ var express = require('express')
 var router = express.Router()
 var commentDB = require('../../DB/comment')
 
-var comment0 = new commentDB()
+var comment0 = new commentDB("HiHi")
 
 comment0.save(function(err, book){
     if(err) return console.error(err);
