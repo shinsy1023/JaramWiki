@@ -16,12 +16,8 @@ var history = require('./routes/post/history')
 var threads = require('./routes/discuss/thread')
 
 //set DB modules
-
-
-
 //connect to mongodb server
 
-mongoose.connect('mongodb://localhost:3000/test');
 
 var db = mongoose.connection;
 db.on('error', console.error);
@@ -32,13 +28,8 @@ db.once('open', function(){
 
 var app = express()
 
-var db = mongoose.connection
-db.on('error', console.error)
-db.once('open', function() {
-  console.log('Connected to database');
-})
 
-mongoose.connect('mongodb://localhost/test')
+mongoose.connect('mongodb://localhost:27017/test')
 var userDB = require('./DB/user')
 var postDB = require('./DB/post')
 var historyDB = require('./DB/history')
