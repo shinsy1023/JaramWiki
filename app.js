@@ -1,5 +1,6 @@
 var express = require('express')
 var path = require('path')
+var mongoose = require('mongoose')
 // var favicon = require('serve-favicon')
 var mongoose = require('mongoose')
 
@@ -8,12 +9,26 @@ var cookieParser = require('cookie-parser')
 var bodyParser = require('body-parser')
 
 var routes = require('./routes/index')
-var users = require('./routes/user/users')
 var login = require('./routes/user/login')
 var wiki = require('./routes/post/wiki')
 var editor = require('./routes/post/write')
 var history = require('./routes/post/history')
 var threads = require('./routes/discuss/thread')
+
+//set DB modules
+
+
+
+//connect to mongodb server
+
+mongoose.connect('mongodb://localhost:3000/test');
+
+var db = mongoose.connection;
+db.on('error', console.error);
+db.once('open', function(){
+    // connected to mongodb server
+    console.log("Connected to mongod server");
+});
 
 var app = express()
 
@@ -24,6 +39,11 @@ db.once('open', function() {
 })
 
 mongoose.connect('mongodb://localhost/test')
+var userDB = require('./DB/user')
+var postDB = require('./DB/post')
+var historyDB = require('./DB/history')
+var threadDB = require('./DB/thread')
+var commentDB = require('./DB/comment')
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
@@ -38,14 +58,11 @@ app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/', routes)
-app.use('/users', users)
 app.use('/login', login)
 app.use('/wiki', wiki)
 app.use('/editor', editor)
 app.use('/histories', history)
 app.use('/threads',threads)
-
-
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

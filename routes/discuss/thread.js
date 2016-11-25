@@ -15,3 +15,7 @@ router.get('/threads/:threadName', function(req, res, next) {
   res.render('thread.pug', { title: threadName, post: postName, comments: comments });
 });
 module.exports = router;
+
+// posts/:post/threads/:thread
+
+// posts/:post/threads 까지만 해서 한 파일로 합치기.
