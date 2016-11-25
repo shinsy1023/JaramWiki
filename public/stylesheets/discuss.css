@@ -1,0 +1,21 @@
+#main { 
+	margin:3%;
+    background-color: lightblue;
+    padding: 0.1px;
+}
+h1{
+	margin-left: 15px;
+}
+#list{
+	margin:3%;
+}
+p{
+	margin-left: 20px;
+	padding: 4px;
+	border-bottom: 1px groove;
+	border-top: 1px groove;
+}
+li{
+	padding: 4px;
+	border-bottom: 1px groove;
+}

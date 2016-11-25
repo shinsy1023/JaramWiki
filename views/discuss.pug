@@ -1,0 +1,17 @@
+mixin lists(items)
+	each item in items
+		li
+			a(href="http://localhost:3000/threads/"+item.id)= item.title
+
+doctype html
+html
+	head
+		title= post_title
+		link(rel='stylesheet',href='/stylesheets/discuss.css')
+	body
+		div#main
+			h1 토론
+		div#list
+			p 항목
+			ol
+				+lists(threads)
