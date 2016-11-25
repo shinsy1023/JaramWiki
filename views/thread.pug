@@ -1,17 +1,18 @@
 mixin comments(comments)
-  eack comment in comments
+  each comment in comments
     div
       div
         p=comment['id']
         p=comment['date']
       div
         p=comment['content']
+    br
 
 doctype html
 html
   head
     title= title
-    link(rel='stylesheet', href='#')
+    //- link(rel='stylesheet', href='#')
   body
     h1=post
     h2=title
