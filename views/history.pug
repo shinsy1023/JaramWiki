@@ -6,7 +6,17 @@ html
 	body
 		- if(revisions != 'none')
 			div.container
-				table!= revisions
+				table
+					tr
+						th= '리비전'
+						th= '일자'
+						th= '링크'
+					for revision, i in revisions
+						tr
+							td= 'r' + revisions[i]
+							td= dates[i]
+							td
+								a(href= links[i])= '바로가기'   
 		- else
 			div.container
 				p

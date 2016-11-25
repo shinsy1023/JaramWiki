@@ -1,0 +1,13 @@
+doctype html
+head
+	title= "문서 목록"
+body 
+	div.container
+		table
+			tr
+				th 제목
+			for title in titles
+				tr
+					td
+						a(href= '/wiki/' + title)= title
+		a(href="/editor") 새로 만들기

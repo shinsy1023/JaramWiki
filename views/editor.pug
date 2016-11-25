@@ -3,15 +3,15 @@ html
 	head
 		title Write
 		script(src="https://code.jquery.com/jquery-3.1.1.min.js")
-		script(type="text/javascript")
-			|	function update_post() {
-			|		$.ajax({
-			|			url: '/wiki',
-			|			type: 'PUT',
-			|			data: {title: $('#title').attr('value'), contents: $('#contents').val()},
-			|			success: function() {location.href = '/wiki/' + $('#title').attr('value'); }
-			|		});
-			|	}
+		script(type="text/javascript").
+			function update_post() {
+				$.ajax({
+					url: '/wiki',
+					type: 'PUT',
+					data: {title: $('#title').attr('value'), contents: $('#contents').val()},
+					success: function() {location.href = '/wiki/' + $('#title').attr('value'); }
+				});
+			}
 	body
 		- if(method =='PUT')
 			span 제목
@@ -19,7 +19,7 @@ html
 			br
 			br
 			span 내용
-			textarea#contents(name="contents")!= contents
+			textarea#contents(name="contents")
 			br
 			br
 			button(onClick="update_post()") Submit

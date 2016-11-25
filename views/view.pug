@@ -2,23 +2,23 @@ doctype html
 html
 	head
 		h1!= title
-		script(type="text/javascript")
-			| function delete_post() {
-			| 	if(window.confirm('정말 삭제하시겠습니까?')) {
-			| 		jQuery.ajax({
-			| 		  url: '/wiki/' + title,
-			| 		  type: 'DELETE',
-			| 		  success: function() { location.href = '/editor'; }
-			| 		});
-			| 	}
-			| }
-			
-		
-
+		script(src="https://code.jquery.com/jquery-3.1.1.min.js")
+		script(type="text/javascript").
+			 function delete_post() {
+			 	if(window.confirm('정말 삭제하시겠습니까?')) {
+			 		$.ajax({
+			 		  url: '/wiki/#{title}',
+			 		  type: 'DELETE',
+			 		  success: function() { location.href = '/wiki'; }
+			 		});
+			 	}
+			 }
 	body
 		- if(!history)
 			button#discuss 토론
 			button#history(onClick="location.href=\"/histories/" + title + "/\"") 역사
 			button#edit(onClick="location.href=\"/editor/" + title + "\"") 수정
 			button#delete(onClick="delete_post()") 삭제
+		- else if(error)
+			br
 		div!= contents
