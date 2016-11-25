@@ -2,30 +2,22 @@ var express = require('express')
 var router = express.Router()
 var commentDB = require('../../DB/comment')
 
-var comment0 = new commentDB()
+var comment0 = new commentDB({content:"hello"})
 
 comment0.save(function(err, book){
     if(err) return console.error(err);
-    console.dir(comment);
+    // console.dir(comment0);
 });
-
-// router.get('/',function(req, res, next) {
-// 	res.render('discuss',threads)
-// })
-// router.get('/:threadName', function(req, res, next) {
-//   var threadName = req.params.threadName
-//   var comments = commentList
-//
-//   res.render('thread', { title : threadName, comments : commentList });
-// });
 
 router.get('/',function(req, res, next) {
 	res.render('discuss',threads)
 });
 router.get('/:threadName', function(req, res, next) {
 	var threadName = req.params.threadName
-	var comments = commentList
-	res.render('thread', { title : threadName, comments : commentList })
+	commentDB.find(function(err, comments){
+        if(err) return res.status(500).send({error: 'database failure'});
+        res.render('thread', { title : threadName, comments : comments })
+    })
 });
 
 module.exports = router
