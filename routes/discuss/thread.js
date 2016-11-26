@@ -2,7 +2,7 @@ var express = require('express')
 var router = express.Router()
 var commentDB = require('../../DB/comment')
 var postDB = require('../../DB/post.js')
-var threadsDB = require('../../DB/threads.js')
+var threadsDB = require('../../DB/thread.js')
 
 var comment0 = new commentDB({content:"hello"})
 
