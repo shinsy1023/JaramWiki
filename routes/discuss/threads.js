@@ -4,17 +4,16 @@ var commentDB = require('../../DB/comment')
 var postDB = require('../../DB/post.js')
 var threadsDB = require('../../DB/thread.js')
 
-var comment0 = new commentDB({content:"hello"})
+// var comment0 = new commentDB({content:"hello"})
 
-comment0.save(function(err, book){
-    if(err) return console.error(err);
+// comment0.save(function(err, book){
+//     if(err) return console.error(err);
     // console.dir(comment0);
-});
+// });
 
 
 router.get('/',function(req, res, next) {
-
-	res.render('thread_list',{threads:threads, post_title: post_title})
+	res.render('../../thread_list',{threads:threads, post_title: post_title})
 });
 
 
@@ -22,7 +21,7 @@ router.get('/:threadName', function(req, res, next) {
 	var threadName = req.params.threadName
 	commentDB.find(function(err, comments){
         if(err) return res.status(500).send({error: 'database failure'});
-        res.render('thread_detail', { title : threadName, comments : comments })
+        res.render('./discuss/thread_detail', { title : threadName, comments : comments })
     })
 });
 

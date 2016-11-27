@@ -1,6 +1,6 @@
-doctype html
-html
-	head
+extends ../layout
+
+block head
 		h1!= title
 		script(src="https://code.jquery.com/jquery-3.1.1.min.js")
 		script(type="text/javascript").
@@ -13,7 +13,7 @@ html
 			 		});
 			 	}
 			 }
-	body
+block body
 		- if(!history)
 			button#discuss 토론
 			button#history(onClick="location.href=\"/histories/" + title + "/\"") 역사

@@ -12,7 +12,7 @@ router.get('/:title', function(req, res, next) {
 			History.findOne({postId : post._id, rev: post.rev}, function(err, history) {
 				history = history.toObject();
 				console.log('got title : ' + post.title + ", contents : " + history.contents);
-				res.render('editor', {title : req.params.title, contents : history.contents, method: 'PUT'});
+				res.render('./post/editor', {title : req.params.title, contents : history.contents, method: 'PUT'});
 			})
 		}
 	})
@@ -20,6 +20,6 @@ router.get('/:title', function(req, res, next) {
 
 router.get('', function(req, res, next) {
 	console.log('redirected to write.js get');
-	res.render('editor', {title : '', contents : '', method: 'POST'});	
+	res.render('./post/editor', {title : '', contents : '', method: 'POST'});	
 })
 module.exports = router

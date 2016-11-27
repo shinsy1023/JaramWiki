@@ -1,9 +1,9 @@
-doctype html
-html
-	head
+extends ../layout
+
+block head
 		h1!= title
-		
-	body
+
+block body
 		- if(revisions != 'none')
 			div.container
 				table
@@ -16,7 +16,7 @@ html
 							td= 'r' + revisions[i]
 							td= dates[i]
 							td
-								a(href= links[i])= '바로가기'   
+								a(href= links[i])= '바로가기'
 		- else
 			div.container
 				p

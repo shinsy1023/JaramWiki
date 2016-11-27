@@ -22,7 +22,7 @@ router.get('/:name', function(req, res, next) {
 					dates.push(history.date);
 					links.push('/histories/' + req.params.name + '/' + history.rev);
 				})
-				res.render('history', {revisions: revs, dates: dates, links: links});
+				res.render('/post/history', {revisions: revs, dates: dates, links: links});
 				console.log('Done');
 			})
 		}

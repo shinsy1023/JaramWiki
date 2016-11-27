@@ -13,7 +13,7 @@ var login = require('./routes/user/login')
 var wiki = require('./routes/post/wiki')
 var editor = require('./routes/post/write')
 var history = require('./routes/post/history')
-var threads = require('./routes/discuss/thread')
+var threads = require('./routes/discuss/threads')
 
 //set DB modules
 //connect to mongodb server

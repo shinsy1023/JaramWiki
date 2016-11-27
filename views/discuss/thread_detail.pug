@@ -1,3 +1,5 @@
+extends ../layout
+
 mixin comments(comments)
   each comment in comments
     div
@@ -8,12 +10,10 @@ mixin comments(comments)
         p=comment['content']
     br
 
-doctype html
-html
-  head
+block head
     title= title
-    //- link(rel='stylesheet', href='#')
-  body
+    
+block body
     h1=post
     h2=title
     +comments(comments)

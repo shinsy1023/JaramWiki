@@ -1,6 +1,5 @@
-doctype html
-html
-	head
+extends ../layout
+block head
 		title Write
 		script(src="https://code.jquery.com/jquery-3.1.1.min.js")
 		script(type="text/javascript").
@@ -12,10 +11,10 @@ html
 					success: function() {location.href = '/wiki/' + $('#title').attr('value'); }
 				});
 			}
-	body
+block body
 		- if(method =='PUT')
 			span 제목
-			input#title(placeholder="제목을 입력하세요", name="title", value!= title, readonly) 
+			input#title(placeholder="제목을 입력하세요", name="title", value!= title, readonly)
 			br
 			br
 			span 내용
@@ -26,7 +25,7 @@ html
 		- else
 			form(action='/wiki', method='POST')
 				span 제목
-				input#title(placeholder="제목을 입력하세요", name="title") 
+				input#title(placeholder="제목을 입력하세요", name="title")
 				br
 				br
 				span 내용

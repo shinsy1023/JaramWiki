@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
 			post = post.toObject();
 			titles.push(post.title);
 		});
-		res.render('post_list', {titles: titles});
+		res.render('./post/post_list', {titles: titles});
 	})
 })
 
@@ -23,7 +23,7 @@ router.get('/:name', function(req, res, next) {
 		console.log('post : ' + post);
 		if(post == {} || post == null || post == '') {
 			console.log('no post named \'' + req.params.name + '\' in database... redirecting to alternative page');
-			res.render('post_view', {title: '문서를 찾을 수 없습니다.', error: true, contents : '<strong>다시 시도해 보세요.</strong>'});
+			res.render('./post/post_view', {title: '문서를 찾을 수 없습니다.', error: true, contents : '<strong>다시 시도해 보세요.</strong>'});
 		} else {
 			post = post.toObject();
 			History.findOne({postId: post._id, rev: post.rev}, function(err, history) {
@@ -31,7 +31,7 @@ router.get('/:name', function(req, res, next) {
 				console.log('title: ' + post.title + ', contents: ' + history.contents);
 				marked(history.contents, function(err, content) {
 					if(!err)
-						res.render('view', {title: post.title, contents : content});
+						res.render('./post/post_view', {title: post.title, contents : content});
 				})
 			});
 		}
@@ -52,7 +52,7 @@ router.post('/', function(req, res, next) {
 						date: new Date(),
 						postId: post.id
 					}, function(err, history) {
-						if(err) 
+						if(err)
 							handleError(err);
 						else {
 							console.log('post has been successfully created. redirecting to wiki/' + req.params.title);

@@ -2,13 +2,12 @@ mixin lists(items)
 	each item in items
 		li
 			a(href="http://localhost:3000/threads/"+item.id)= item.title
+extends layout
 
-doctype html
-html
-	head
+block head
 		title= post_title
 		link(rel='stylesheet',href='/stylesheets/discuss.css')
-	body
+block body
 		div#main
 			h1 토론
 		div#list
